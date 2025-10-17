@@ -33,7 +33,7 @@ mB.run_direct()
 while True:
     # Start from position 0
     current_position = 0
-    step = -1600  # degrees to move per button press
+    step = -1650  # degrees to move per button press
 
     btn = ev3.Button()
 
@@ -47,8 +47,8 @@ while True:
         if current_position <= -1600:
             motor.stop
         elif ultra.value() < 100:
-            mA.speed_sp = 0
-            mB.speed_sp = 0
+            mA.duty_cycle_sp = 0
+            mB.duty_cycle_sp = 0
             new_position = current_position + step
             print("Moving forward to", new_position)
             move_motor(new_position)
@@ -56,7 +56,7 @@ while True:
             print("New position is:", current_position)
             sleep(0.02)  # Debounce delay
         elif ulta_val <= 2550:
-            mA.speed_sp = -BASE_SPEED
-            mB.speed_sp = -BASE_SPEED
+            mA.duty_cycle_sp = -BASE_SPEED
+            mB.duty_cycle_sp = -BASE_SPEED
         
 
